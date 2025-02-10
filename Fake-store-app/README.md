@@ -1,2 +1,2 @@
 ## Demo Video
-[Click here to watch the demo](videos/demo.mp4)
+[Click here to watch the demo](video/demo.mp4)
