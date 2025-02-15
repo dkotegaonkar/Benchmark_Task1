@@ -42,7 +42,7 @@ function addTransaction(description, category, amount, type) {
     load();
 }
 function deleteTransaction(id) {
-    transactions = transactions.filter(function (transaction) { return transaction.id !== id; });
+    transactions = transactions.filter((transaction) => { return transaction.id !== id; });
     load();
 }
 function clearAll() {
