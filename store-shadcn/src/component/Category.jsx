@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -8,19 +9,21 @@ import {
   CardContent,
   CardDescription,
   CardFooter,
-  CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
-const getProducts = async () => {
-  const response = await axios.get("https://fakestoreapi.com/products");
-  return response.data;
+const getFilteredProducts = async (category) => {
+  const response = await axios.get(
+    `https://fakestoreapi.com/products/category/${category}`
+  );
+  return response.data || [];
 };
 
-const Products = () => {
+const Category = () => {
+  const { category } = useParams();
   const { data, error, isLoading } = useQuery({
-    queryKey: ["products"],
-    queryFn: getProducts,
+    queryKey: [category],
+    queryFn: () => getFilteredProducts(category),
   });
 
   if (isLoading) {
@@ -63,4 +66,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Category;
