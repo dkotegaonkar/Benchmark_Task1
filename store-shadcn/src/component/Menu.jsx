@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Menubar,
   MenubarContent,
@@ -29,18 +30,21 @@ const Menu = () => {
     <>
       <Menubar>
         <MenubarMenu>
-          <MenubarTrigger>Home</MenubarTrigger>
+          <MenubarTrigger><Link to={`/`}>Home</Link></MenubarTrigger>
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>Categories</MenubarTrigger>
           <MenubarContent>
           {data.map((category) => (
             <div key ={category}>
-              <MenubarItem>{category}</MenubarItem>
+              <MenubarItem asChild><Link to={`/${category}`}>{category}</Link></MenubarItem>
               <MenubarSeparator />
             </div>
           ))}
           </MenubarContent>
+        </MenubarMenu>
+        <MenubarMenu>
+          <MenubarTrigger><Link to={`/cart`}>Cart</Link></MenubarTrigger>
         </MenubarMenu>
       </Menubar>
     </>
